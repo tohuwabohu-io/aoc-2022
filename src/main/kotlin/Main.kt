@@ -1,12 +1,12 @@
-import aoc.day1.*
+import aoc.Day01
 
 fun main() {
     println("Hello, aoc!")
 
     println("Day 1:")
     print("Part One\t")
-    println(calc01()[0])
+    println(Day01.part01()[0])
 
     print("Part Two\t")
-    println(calc02())
+    println(Day01.part02())
 }
