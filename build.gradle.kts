@@ -16,7 +16,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("io.tohuwabohu.aoc2022.MainKt")
 }
 
 tasks.named<Test>("test") {

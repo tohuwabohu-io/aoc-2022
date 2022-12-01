@@ -1,5 +1,3 @@
-import aoc.Day01
-
 /**
  * Santa's reindeer typically eat regular reindeer food, but they need a lot of magical energy to deliver presents on
  * Christmas. For that, their favorite snack is a special type of star fruit that only grows deep in the jungle. The
@@ -18,10 +16,10 @@ fun main() {
 
     println("Day 1:")
     print("Part One\t")
-    println(Day01.part01())
+    println(io.tohuwabohu.aoc2022.day01.part01())
 
     print("Part Two\t")
-    println(Day01.part02())
+    println(io.tohuwabohu.aoc2022.day01.part02())
 
     // TODO: next day
 }
