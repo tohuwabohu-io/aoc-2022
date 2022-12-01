@@ -1,4 +1,4 @@
-package aoc
+package aoc.day1
 
 import java.math.BigDecimal
 
@@ -24,7 +24,12 @@ fun calc01(): List<BigDecimal> {
     }
 
     val totalCalories = elfCaloriesMap.values.toMutableList().sortedDescending();
-    println(totalCalories)
 
     return totalCalories
+}
+
+fun calc02(): BigDecimal {
+    return calc01()
+        .subList(0, 3)
+        .fold(BigDecimal.ZERO, BigDecimal::add)
 }
