@@ -1,3 +1,4 @@
+
 /**
  * Santa's reindeer typically eat regular reindeer food, but they need a lot of magical energy to deliver presents on
  * Christmas. For that, their favorite snack is a special type of star fruit that only grows deep in the jungle. The
@@ -33,5 +34,10 @@ fun main() {
     print("Part Two\t")
     println(io.tohuwabohu.aoc2022.day03.part02())
 
+    println("Day 4:")
+    print("Part One\t")
+    println(io.tohuwabohu.aoc2022.day04.part01())
+    print("Part Two\t")
+    println(io.tohuwabohu.aoc2022.day04.part02())
     // TODO: next
 }
