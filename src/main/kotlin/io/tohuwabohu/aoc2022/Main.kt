@@ -39,5 +39,12 @@ fun main() {
     println(io.tohuwabohu.aoc2022.day04.part01())
     print("Part Two\t")
     println(io.tohuwabohu.aoc2022.day04.part02())
+
+    println("Day 5:")
+    print("Part One\t")
+    println(io.tohuwabohu.aoc2022.day05.part01())
+    print("Part Two\t")
+    println(io.tohuwabohu.aoc2022.day05.part02())
+
     // TODO: next
 }
