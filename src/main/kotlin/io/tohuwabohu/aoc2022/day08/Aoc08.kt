@@ -146,6 +146,8 @@ fun part02(): Int {
                 .filter { treeColumn -> treeColumn.index in 1 until currentLine.size - 1 }
                 .map { treeColumn ->
                     var sceneryScore = 1
+                    val verticalLine = forest.map { it[treeColumn.index] }
+
                     // left
                     sceneryScore *= calculateViewingDistance(currentLine, treeColumn.index, treeColumn.value, true)
 
@@ -154,7 +156,7 @@ fun part02(): Int {
 
                     // up
                     sceneryScore *= calculateViewingDistance(
-                        forest.map { it[treeColumn.index] },
+                        verticalLine,
                         treeLine.index,
                         treeColumn.value,
                         true
@@ -162,7 +164,7 @@ fun part02(): Int {
 
                     // down
                     sceneryScore *= calculateViewingDistance(
-                        forest.map { it[treeColumn.index] },
+                        verticalLine,
                         treeLine.index,
                         treeColumn.value,
                         false
@@ -193,27 +195,29 @@ private fun checkVisibility(treeLine: List<Tree>, start: Int, end: Int, tree: Tr
 }
 
 private fun calculateViewingDistance(trees: List<Tree>, start: Int, tree: Tree, reverse: Boolean): Int {
-    var visibleTrees = 1
-
     if (reverse) {
-        for (i in start - 1 downTo 1) {
-            if (trees[i].size >= tree.size) {
-                break;
-            } else {
-                visibleTrees++
-            }
+        val left = trees.subList(0, start - 1)
+
+        val blockingTreePos = left.withIndex()
+            .findLast { neighbor -> neighbor.value.size >= tree.size }?.index
+
+        return if (blockingTreePos != null) {
+            (start - 1) - blockingTreePos
+        } else {
+            left.size + 1
         }
     } else {
-        for (i in start + 1 until trees.size - 1) {
-            if (trees[i].size >= tree.size) {
-                break;
-            } else {
-                visibleTrees++
-            }
+        val right = trees.subList(start + 1, trees.size)
+
+        val blockingTreePos = right.withIndex()
+            .find { neighbor -> neighbor.value.size >= tree.size}?.index
+
+        return if (blockingTreePos != null) {
+            blockingTreePos + 1
+        } else {
+            right.size
         }
     }
-
-    return visibleTrees
 }
 
 private class Tree(val x: Int, val y: Int, val size: Int, var visible: Boolean)
