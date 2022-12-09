@@ -195,28 +195,18 @@ private fun checkVisibility(treeLine: List<Tree>, start: Int, end: Int, tree: Tr
 }
 
 private fun calculateViewingDistance(trees: List<Tree>, start: Int, tree: Tree, reverse: Boolean): Int {
-    if (reverse) {
+    return if (reverse) {
         val left = trees.subList(0, start - 1)
 
-        val blockingTreePos = left.withIndex()
-            .findLast { neighbor -> neighbor.value.size >= tree.size }?.index
-
-        return if (blockingTreePos != null) {
-            (start - 1) - blockingTreePos
-        } else {
-            left.size + 1
-        }
+        left.withIndex()
+            .findLast { neighbor -> neighbor.value.size >= tree.size }?.let { (start - 1) - it.index }
+            ?: (left.size + 1)
     } else {
         val right = trees.subList(start + 1, trees.size)
 
-        val blockingTreePos = right.withIndex()
-            .find { neighbor -> neighbor.value.size >= tree.size}?.index
-
-        return if (blockingTreePos != null) {
-            blockingTreePos + 1
-        } else {
-            right.size
-        }
+        right.withIndex()
+            .find { neighbor -> neighbor.value.size >= tree.size}?.let { it.index + 1 }
+            ?: right.size
     }
 }
 
