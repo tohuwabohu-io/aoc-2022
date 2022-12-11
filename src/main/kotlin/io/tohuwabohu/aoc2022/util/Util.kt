@@ -6,7 +6,7 @@ import java.io.File
 fun getBufferedReader(fileName: String): BufferedReader
         = File(fileName).bufferedReader()
 
-inline fun <T> Iterable<T>.multiplyInt(selector: (T) -> Int): Int {
+inline fun <T> Iterable<T>.productOf(selector: (T) -> Int): Int {
     this.firstOrNull() ?: return 0
     var result = 1
     for (element in this) {
