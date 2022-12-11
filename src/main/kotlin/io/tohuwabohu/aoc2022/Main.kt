@@ -76,5 +76,11 @@ fun main() {
     println("Part Two\t")
     io.tohuwabohu.aoc2022.day10.part02()
 
+    println("Day 11:")
+    print("Part One\t")
+    println(io.tohuwabohu.aoc2022.day11.part01())
+    print("Part Two\t")
+    println(io.tohuwabohu.aoc2022.day11.part02())
+
     // TODO: next
 }
