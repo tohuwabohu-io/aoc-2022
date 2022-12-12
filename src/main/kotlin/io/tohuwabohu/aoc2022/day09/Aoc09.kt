@@ -1,5 +1,7 @@
 package io.tohuwabohu.aoc2022.day09
 
+import io.tohuwabohu.aoc2022.util.Point
+
 fun part01(): Int {
     val reader = io.tohuwabohu.aoc2022.util.getBufferedReader("src/main/resources/aoc09.txt")
 
@@ -99,26 +101,6 @@ private fun parseCommand(line: String): Command {
     val split = line.split(" ")
 
     return Command(direction = split[0][0], tiles = split[1].toInt())
-}
-
-private class Point(var x: Int, var y: Int) {
-    override fun toString(): String {
-        return "(x $x, y $y)"
-    }
-
-    override fun equals(other: Any?): Boolean {
-        return if (other is Point) this.x == other.x && this.y == other.y else super.equals(other)
-    }
-
-    fun isAdjacent(point: Point): Boolean {
-        return listOf(x - 1..x + 1).flatten().contains(point.x) && listOf(y - 1..y + 1).flatten().contains(point.y)
-    }
-
-    override fun hashCode(): Int {
-        var result = x
-        result = 31 * result + y
-        return result
-    }
 }
 
 private class Command(val direction: Char, val tiles: Int)
